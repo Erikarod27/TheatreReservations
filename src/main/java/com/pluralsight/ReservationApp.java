@@ -7,14 +7,16 @@ import java.util.Scanner;
 public class ReservationApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         //get name, date, and tickets as input
         System.out.print("Enter your name: ");
         String name = scanner.nextLine().trim();
         System.out.print("What date will you be coming (mm/dd/yyyy): ");
         String dateString = scanner.nextLine().trim();
         //format date
-        String formattedDate = LocalDate.parse(dateString, formatter).format(formatter);
+        LocalDate date = LocalDate.parse(dateString, inputFormatter);
+        String formattedDate = date.format(outputFormatter);
         System.out.print("How many tickets would you like? ");
         int tickets = scanner.nextInt();
         //split name into nameParts array to rename values
